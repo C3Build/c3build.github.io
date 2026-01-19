@@ -5,7 +5,7 @@ hero:
   name: "C3Build"
   text: "A minimal cmake-like buildscript for C3"
   image:
-    src: /logo.png
+    src: ./logo.png
   actions:
     - theme: brand
       text: Get C3Build

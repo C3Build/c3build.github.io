@@ -14,7 +14,7 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/c3build'}
         ],
         logo: {
-            src: "logo.png"
+            src: "../logo.png"
         },
     },
     markdown: {
