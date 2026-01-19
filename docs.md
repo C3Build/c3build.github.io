@@ -15,53 +15,6 @@ add("src/main.c3") -- assuming that this file exists
 program(example)
 ```
 
-### this projects setup
-
-```c3build
-compiler(VERSION MIN 0.7.1 MAX 0.7.9)
-project(c3build
-        VERSION 0.3.2
-        AUTHOR "Kiana Bennett")
-
-find(EXE "git")
-
-option("--trust=full")
-
-ifdef(exe_git)
-    option("-D GIT_HASH")
-endif()
-
-POSIX_INSTALL_DIR   = "$(HOME)/$(PROJECT)"
-WINDOWS_INSTALL_DIR = "$(HOME)\\$(PROJECT)"
-WINDOWS_FILE_NAME   = "$(PROJECT).exe"
-
-task("install")
-    print("Installing...")
-    ifdef(OS_LINUX)
-        remove(DIR "$(POSIX_INSTALL_DIR)")
-        create(DIR "$(POSIX_INSTALL_DIR)")
-        copy(FILE "build/$(PROJECT)" "$(POSIX_INSTALL_DIR)/$(PROJECT)")
-        cmd("chmod +x $(POSIX_INSTALL_DIR)/$(PROJECT)")
-    endif()
-    ifdef(OS_DARWIN)
-        remove(DIR "$(POSIX_INSTALL_DIR)")
-        create(DIR "$(POSIX_INSTALL_DIR)")
-        copy(FILE "build/$(PROJECT)" "$(POSIX_INSTALL_DIR)/$(PROJECT)")
-        cmd("chmod +x $(POSIX_INSTALL_DIR)/$(PROJECT)")
-    endif()
-    ifdef(OS_WINDOWS)
-        remove(DIR "$(WINDOWS_INSTALL_DIR)")
-        create(DIR "$(WINDOWS_INSTALL_DIR)")
-        copy(FILE "build\\$(WINDOWS_FILE_NAME)" "$(WINDOWS_INSTALL_DIR)\\$(WINDOWS_FILE_NAME)")
-        cmd("setx PATH \"%PATH%;$(WINDOWS_INSTALL_DIR)\"")
-    endif()
-endtask()
-
-add("src/")
-
-program(c3build)
-```
-
 ## Functions
 
 ### `compiler()`
