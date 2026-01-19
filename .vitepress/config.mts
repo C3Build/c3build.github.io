@@ -3,7 +3,7 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
     title: "C3Build",
     head: [
-        ["link", { rel: "icon", href: "../logo.png" }],
+        ["link", { rel: "icon", href: "/logo.png" }],
     ],
     themeConfig: {
         nav: [
@@ -14,7 +14,7 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/c3build'}
         ],
         logo: {
-            src: "../logo.png"
+            src: "/logo.png"
         },
     },
     markdown: {
